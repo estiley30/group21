@@ -1,0 +1,103 @@
+.form {
+    padding: 1em;
+    margin-top: 120px; /* Adjust the margin to create space for the fixed navigation bar */
+    /*margin-left: 700px;*/
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+
+.form .title {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.form .forgotLine {
+    margin-top: 0;
+}
+
+form input,select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    /*background: red;*/
+}
+
+
+.input-row {
+    display: flex;
+    margin-bottom: 15px;
+    column-gap: 10px;
+    width: 100%; /* Ensure the container spans the full width */
+}
+
+.input-control{
+    flex-basis: 100%;
+}
+
+.location-inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.2fr;
+    column-gap: 10px;
+}
+
+/*dont work--------------*/
+.checkbox {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    /*white-space: nowrap;*/
+    /*align-items: center;*/
+    /*margin-bottom: 10px; !* Add margin to separate checkboxes *!*/
+
+}
+
+input[type="checkbox"] {
+
+}
+
+/*---------------------*/
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.input-control input:focus{
+    /*font-size: 10px;*/
+    outline: 0;
+}
+
+.input-control.success input{
+    border-color: #04AA6D;
+}
+
+.input-control.error input{
+    border-color: red;
+
+}
+
+.input-control .error{
+
+    border-radius: 5px;
+    background-color: rgba(246, 18, 18, 0.2);
+    color: red;
+    font-size: 15px;
+
+}
+
+@media screen and (max-width: 600px) {
+
+    .input-row {
+        flex-direction: column;
+        column-gap: 10px;
+        width: 100%; /* Ensure the container spans the full width */
+}
+    .location-inputs {
+       grid-template-columns: 1fr; /* Display each cell in a separate row */
+    }
+
+}

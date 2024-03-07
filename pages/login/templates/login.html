@@ -1,0 +1,47 @@
+
+{% extends 'base.html' %}
+{% block title %}login{% endblock %}
+{% block main %}
+
+<div class="form container">
+    <div class="title">Login</div>
+    <form action="/login" method="POST">
+
+<!--      <div class="container form">-->
+        <label><b>Username</b></label>
+          <label>
+              <input type="text" placeholder="Enter Email" name="email" required>
+          </label>
+
+          <label><b>Password</b></label>
+          <label>
+              <input type="password" placeholder="Enter Password" name="password" required>
+          </label>
+
+<!--          <button type="submit" class="submit"><a href="/home">Login</a></button>-->
+        <button type="submit" class="submit">Login</button>
+
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+<!--      </div>-->
+
+<!--      <div-->
+<!--              class="container form forgotLine" style="background-color:rgba(241,241,241,0.72)">-->
+          <br>
+          <br>
+        <button type="button" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+<!--      </div>-->
+    </form>
+    Don't have an account? <a href="../../signUp/templates/signUp.html">sign up</a>
+</div>
+
+
+{% endblock %}
+
+<!--</body>-->
+<!--</html>-->
+
+
+

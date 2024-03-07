@@ -1,0 +1,92 @@
+#travelScheduleTable{
+    height: 500px;
+    overflow-y: auto;
+}
+.table{
+    background-color: rgba(255, 255, 255, 0.8);
+   border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    /*min-width: 800px;*/
+    border-radius: 10px ;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+ .table thead tr{
+     background-color: #197067;
+     color: white;
+     text-align: left;
+     /*---------*/
+     /*position: sticky;*/
+ }
+.table thead tr th{
+   position: sticky;
+}
+ .table th,
+ .table td{
+     padding: 12px 15px;
+ }
+
+ .table tbody tr{
+     border-bottom: 1px solid #dddddd;
+ }
+
+ .table tbody tr:nth-of-type(even){
+     background-color: #f3f3f3;
+     background-color: rgba(243, 243, 243, 0.7);
+ }
+
+ .table tbody tr:last-of-type{
+     border-bottom: 2px solid #197067;
+ }
+
+ #travelScheduleTable{
+    margin-right: 20px;
+ }
+
+ @media screen and (max-width: 1000px) {
+     .table{
+         background: none;
+     }
+     .table thead{
+         display: none;
+     }
+     .table, .table tbody, .table tr, .table td{
+         display: block;
+         width: 100%;
+     }
+     .table tr{
+         margin-bottom: 20px;
+
+     }
+     .table tbody tr td{
+         background-color: rgb(255, 255, 255);
+         border: 1px solid #dddddd;
+         /*text-align: right;*/
+         /*padding-left: 50%;*/
+         position: relative;
+
+     }
+     .table td:before{
+         content: attr(data-label);
+         position: absolute;
+         left: 0;
+     }
+     .bodyy{
+         margin-right: 0;
+     }
+
+     /*#registerButton{
+         margin: 0;
+
+     }*/
+
+     /*#registerButton{
+         !*position: fixed;*!
+         top: 10px; !* Adjust as needed *!
+         right: 2000px; !* Adjust as needed *!
+         z-index: 999; !* Ensure it's above other content *!
+     }*/
+
+
+ }

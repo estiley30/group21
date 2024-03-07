@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block main %}
+<!--):-->
+<link rel="stylesheet" href="/pages/home/static/home.css">
+<!--):-->
+    <div >
+        <ul class="menu">
+            <li class="box"><a href="/travelSchedule">Travel schedule</a></li>
+            <li class="box"><a href="/travelHistory">My travel history</a></li>
+            <li class="box"><a href="/newTravel">Create a new trip</a></li>
+        </ul>
+    </div>
+
+
+{% if session.get('logged_in') %}
+    <h3>Email: {{session.get('email')}}</h3>
+{% else %}
+    <h3>Email: ***</h3>
+{% endif %}
+
+
+{% endblock %}

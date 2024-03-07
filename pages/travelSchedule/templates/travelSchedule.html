@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% block title %}Travel Schedule{% endblock %}
+{% block main %}
+
+<section class="bodyy">
+
+
+<h2>Travel schedule</h2>
+    <br>
+    <th><input type="date" class="search-input dateSearch"  placeholder="Search by date..."></th>
+    <th><input type="text" class="search-input sourceSearch" placeholder="Search by Source..."></th>
+    <th><input type="text" class="search-input destinationSearch"  placeholder="Search by Destination..."></th>
+    <br>
+
+    <div class= "input-control error" id="systemMessageSchdlPage" unchosen-error="Please choose a ride first"></div> <!--- figure out how to display it!! --->
+<table class="table travelScheduleTable" id="travelScheduleTable">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Date </th>
+            <th>Time </th>
+            <th>Source </th>
+            <th>Destination</th>
+            <th>Max</th>
+            <th>Driver </th>
+            <th>Price </th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td data-label="Date">21.02.24</td>
+            <td data-label="Time">12:00</td>
+            <td data-label="Source">Nahariya</td>
+            <td data-label="Destination">Beer Sheva</td>
+            <td data-label="Max">4</td>
+            <td data-label="Driver">Yael Naveh</td>
+            <td data-label="Price">50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>10:00</td>
+            <td>Nahariya</td>
+            <td>Haifa</td>
+            <td>4</td>
+            <td>Esti Leykind</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>14:00</td>
+            <td>Nahariya</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Ofir Talmi</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>24.02.24</td>
+            <td>20:00</td>
+            <td>Tel Aviv</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Oren Maor</td>
+            <td>20</td>
+        </tr>
+      <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Tel Aviv</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ori Lanir</td>
+            <td>35</td>
+        </tr>
+          <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Beer Sheva</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ohad Amir</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td data-label="Date">21.02.24</td>
+            <td data-label="Time">12:00</td>
+            <td data-label="Source">Nahariya</td>
+            <td data-label="Destination">Beer Sheva</td>
+            <td data-label="Max">4</td>
+            <td data-label="Driver">Yael Naveh</td>
+            <td data-label="Price">50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>10:00</td>
+            <td>Nahariya</td>
+            <td>Haifa</td>
+            <td>4</td>
+            <td>Esti Leykind</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>14:00</td>
+            <td>Nahariya</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Ofir Talmi</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>24.02.24</td>
+            <td>20:00</td>
+            <td>Tel Aviv</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Oren Maor</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Tel Aviv</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ori Lanir</td>
+            <td>35</td>
+        </tr>
+          <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Beer Sheva</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ohad Amir</td>
+            <td>35</td>
+        </tr>
+
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td data-label="Date">21.02.24</td>
+            <td data-label="Time">12:00</td>
+            <td data-label="Source">Nahariya</td>
+            <td data-label="Destination">Beer Sheva</td>
+            <td data-label="Max">4</td>
+            <td data-label="Driver">Yael Naveh</td>
+            <td data-label="Price">50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>10:00</td>
+            <td>Nahariya</td>
+            <td>Haifa</td>
+            <td>4</td>
+            <td>Esti Leykind</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>14:00</td>
+            <td>Nahariya</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Ofir Talmi</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>24.02.24</td>
+            <td>20:00</td>
+            <td>Tel Aviv</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Oren Maor</td>
+            <td>20</td>
+        </tr>
+      <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Tel Aviv</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ori Lanir</td>
+            <td>35</td>
+        </tr>
+          <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Beer Sheva</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ohad Amir</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td data-label="Date">21.02.24</td>
+            <td data-label="Time">12:00</td>
+            <td data-label="Source">Nahariya</td>
+            <td data-label="Destination">Beer Sheva</td>
+            <td data-label="Max">4</td>
+            <td data-label="Driver">Yael Naveh</td>
+            <td data-label="Price">50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>10:00</td>
+            <td>Nahariya</td>
+            <td>Haifa</td>
+            <td>4</td>
+            <td>Esti Leykind</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>22.02.24</td>
+            <td>14:00</td>
+            <td>Nahariya</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Ofir Talmi</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>24.02.24</td>
+            <td>20:00</td>
+            <td>Tel Aviv</td>
+            <td>Beer Sheva</td>
+            <td>4</td>
+            <td>Oren Maor</td>
+            <td>20</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Tel Aviv</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ori Lanir</td>
+            <td>35</td>
+        </tr>
+          <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>25.02.24</td>
+            <td>15:00</td>
+            <td>Beer Sheva</td>
+            <td>Jerusalem</td>
+            <td>4</td>
+            <td>Ohad Amir</td>
+            <td>35</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+
+ <div class="container">
+     <button type="submit" class="submit" name="selectRowButton" id="registerButton" onclick="registerForRide()">Register</button>
+        <div class="popup" id="popup">
+            <img src="../../static/tick.png">
+            <h2>Thank You!</h2>
+            <p>You registered successfully for the ride</p>
+            <button type="button" onclick="closePopup()">OK</button>
+        </div>
+ </div>
+<script src="pages/travelSchedule/static/travelSchedule.js" defer></script>
+<!--    <script src="../static/travelSchedule.js" defer></script>-->
+<!--{% include('js.html') %}-->
+{% endblock %}
+<!--<script src="{{url_for('pages', filename='travelSchedule/static/travelSchedule.js') }}"></script>-->

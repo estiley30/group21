@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block title %}Travel History{% endblock %}
+{% block main %}
+
+    <section class="bodyy">
+
+
+        <h2>My Travel History</h2>
+
+    <br>
+    <th><input type="date" class="search-input dateSearch" placeholder="Search by date..."></th>
+    <th><input type="text" class="search-input sourceSearch" placeholder="Search by Source..."></th>
+    <th><input type="text" class="search-input destinationSearch" placeholder="Search by Destination..."></th>
+        <br>
+    <div class="input-control error" id="systemMessageHistPage" unchosen-error="Please choose a ride first"></div>
+<table class="table travelScheduleTable" id="travelScheduleTable">
+    <thead>
+        <tr>
+            <th>Select</th>
+            <th>Date </th>
+            <th>Time </th>
+            <th>Source </th>
+            <th>Destination</th>
+            <th>Available Places</th>
+            <th>Driver </th>
+            <th>Price </th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>21.01.24</td>
+            <td>12:00</td>
+            <td>Nahariya</td>
+            <td>Beer Sheva</td>
+            <td>1</td>
+            <td>Yael Naveh</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>24.01.24</td>
+            <td>10:00</td>
+            <td>Beer Sheva</td>
+            <td>Haifa</td>
+            <td>0</td>
+            <td>Me</td>
+            <td>40</td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>26.01.24</td>
+            <td>14:00</td>
+            <td>Haifa</td>
+            <td>Beer Sheva</td>
+            <td>0</td>
+            <td>Ofir Talmi</td>
+            <td>50</td>
+        </tr>
+            <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>01.02.24</td>
+            <td>20:00</td>
+            <td>Beer Sheva</td>
+            <td>Tel Aviv</td>
+            <td>2</td>
+            <td>Oren Maor</td>
+            <td>20</td>
+        </tr>
+      <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>03.02.24</td>
+            <td>15:00</td>
+            <td>Tel Aviv</td>
+            <td>Jerusalem</td>
+            <td>3</td>
+            <td>Nati Lanir</td>
+            <td>35</td>
+        </tr>
+          <tr>
+            <td><input type="radio" name="selectRow"></td>
+            <td>15.02.24</td>
+            <td>15:00</td>
+            <td>Beer Sheva</td>
+            <td>Haifa</td>
+            <td>4</td>
+            <td>Me</td>
+            <td>35</td>
+        </tr>
+    </tbody>
+</table>
+</section>
+<button type="submit" class="submit" id="showTravelButton">Show Travel</button>
+<!--onclick="checkRadio()"-->
+<!--<a href="showTravel.html">Show Travel</a>-->
+<script src="../../travelSchedule/static/travelSchedule.js" defer></script>
+<script src="../static/travelHistory.js" defer></script>
+{% endblock %}

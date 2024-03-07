@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% block title %}New Travel{% endblock %}
+{% block main %}
+
+<div class="form container">
+    <div class="title">New Trip</div>
+
+    <form id="tripForm" action="/static">
+<!--        <div class="input-row">-->
+            <div class="input-box">
+                <label>Source</label>
+                <div class="location-inputs">
+                    <div class="input-control">
+                        <input id="citySource" name="citySource" type="text" placeholder="City" >
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input id="streetSource" name="streetSource" type="text" placeholder="Street" disabled>
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input id="numberSource" name="numberSource" type="number" placeholder="No." disabled>
+                        <div class="error"></div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="input-box">
+                <label>Destination</label>
+                <div class="location-inputs">
+                    <div class="input-control">
+                        <input id="cityDestination" name="citySDestination" type="text" placeholder="City">
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input id="streetDestination" name="streetDestination" type="text" placeholder="Street" disabled>
+                        <div class="error"></div>
+                    </div>
+                    <div class="input-control">
+                        <input id="numberDestination" name="numberDestination" type="number" placeholder="No." disabled>
+                        <div class="error"></div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="input-row">
+            <div class="input-box ">
+                <label>Date</label>
+                <div class="input-control">
+                    <input id="dateTrip" name="dateTrip" type="date" ><!--required-->
+                    <div class="error"></div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Time</label>
+                <div class="input-control">
+                    <input id="timeTrip" name="timeTrip" type="time" ><!--required-->
+                    <div class="error"></div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Number of Places</label>
+                <div class="input-control">
+                    <input id="numOfPlc" name="numOfPlc" type="number" placeholder="Enter number"  min="1" max="100"><!--required-->
+                    <div class="error"></div>
+                </div>
+            </div>
+
+            <div class="input-box">
+                <label>Price</label>
+                <div class="input-control">
+                    <input id="price" name="price" type="number" placeholder="Enter price"  min="1" max="1000"><!--required-->
+                    <div class="error"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="input-box">
+            <label>Comments</label>
+            <textarea placeholder="Enter your comments" rows="4" ></textarea>
+        </div>
+
+
+        <div class="checkbox">
+                <label >
+                    <input type="checkbox" required> I agree to the terms and conditions  <!--required-->
+                </label>
+        </div>
+        <div class="button">
+                <input type="submit" class="submit" id="submitTrip" value="Register">
+        </div>
+    </form>
+</div>
+
+<script type="module" src="../static/newTrip.js"></script>
+
+{% endblock %}

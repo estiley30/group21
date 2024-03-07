@@ -1,0 +1,41 @@
+.menu{
+    /*background-color: red;*/
+    margin-top: 50px;
+    margin-left: 800px;
+
+    list-style: none;
+
+}
+
+.menu li{
+    width: 400px; /* Adjust the width of the square */
+    height: 100px; /* Adjust the height of the square */
+    margin: 20px 0;
+    background-color:#197067;
+    text-align: center;
+    border-radius: 30px;
+    font-size: 30px;
+    padding-top: 50px;
+
+
+}
+.menu li a{
+    margin: 20px 0;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 50px;
+}
+
+.menu li:hover{
+    transform: scale(1.06);
+    background-color:#0a3833;
+    border-width: 5px;
+    border-color: white;
+}
+
+@media (max-width: 1200px) {
+    .menu {
+        margin: 50px 10px;
+    }
+}

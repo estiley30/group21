@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Travel</title>
+    <link rel="stylesheet" href="../../static/common.css">
+    <link rel="stylesheet" href="../../static/form.css">
+</head>
+<body>
+<section id="header">
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <img src="../icons8-menu-50%20(1).png">
+        </label>
+        <ul id="navbar">
+            <li><a href="../../home/templates/home.html">Home</a></li>
+            <li><a href="../../about/templates/about.html">About</a></li>
+            <li><a href="../../travelSchedule/templates/travelSchedule.html">Travel Schedule</a></li>
+            <li><a href="../../travelHistory/templates/travelHistory.html">My History</a></li>
+            <li><a href="../../newTravel/templates/newTrip.html">New Trip</a></li>
+        </ul>
+    </nav>
+
+    <div id="nav-button">
+        <button class="btn" id="logonBtn"><a href="../../login/templates/login.html">Sign In</a> </button>
+        <button class="btn" id="signUpBtn"><a href="../../signUp/templates/signUp.html">Sign Up</a> </button>
+        <button class="btn" id="logOutBtn"><a href="../../../../Flask%20Skeleton%20Project/pages/entry/templates/first.html">Logout</a> </button>
+    </div>
+
+</section>
+<div class="form container">
+    <div class="title">Travel Details</div>
+
+    <form action="#">
+<!--        <div class="input-row">-->
+            <div class="input-box">
+                <label>Source</label>
+                <div class="location-inputs">
+                    <input disabled type="text" placeholder="Beer Sheva" required>
+                    <input disabled type="text" placeholder="Derech Metzada" required>
+                    <input disabled type="text" placeholder="26" required>
+                </div>
+
+            </div>
+
+
+            <div class="input-box">
+                <label>Destination</label>
+                <div class="location-inputs">
+                    <input disabled type="text" placeholder="Tel Aviv" required>
+                    <input disabled type="text" placeholder="Rothschiled" required>
+                    <input disabled type="text" placeholder="123" required>
+                </div>
+            </div>
+<!--        </div>-->
+
+        <div class="input-row">
+            <div class="input-box">
+                <label>Date</label>
+                <input disabled type="text"  placeholder="12.02.24"  required>
+            </div>
+
+            <div class="input-box">
+                <label>Time</label>
+                <input disabled type="text" placeholder="10:00" required>
+            </div>
+
+            <div class="input-box">
+                <label>Number of Places</label>
+                <input disabled type="number" placeholder="2" required min="1" max="100">
+            </div>
+
+            <div class="input-box">
+                <label>Price</label>
+                <input disabled type="number" placeholder="25" required min="1" max="1000">
+            </div>
+        </div>
+
+
+        <div class="input-box">
+            <label>Comments</label>
+            <textarea disabled placeholder="I would like to bring a suitcase if possible, to ensure there is enough space in the luggage." rows="4" required></textarea>
+        </div>
+
+
+        <div class="checkbox">
+                <label >
+                    <input type="checkbox" required> I agree to the terms and conditions
+                </label>
+        </div>
+            <div class="button-container">
+            <button class="submit" type="submit"><a href="editTravel.html">Edit</a></button>
+<!--            <div class="button">-->
+<!--                    <input type="submit" class="submit" value="Edit"><a href="editTravel.html"></a>-->
+<!--            </div>-->
+                <button class="submit" type="submit">Delete</a></button>
+<!--            <div class="button">-->
+<!--                    <input type="submit" class="submit" value="Delete">-->
+<!--            </div>-->
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
