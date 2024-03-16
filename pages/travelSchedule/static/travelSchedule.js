@@ -78,12 +78,6 @@ function search(){
         tbody.innerHTML= filteredRows;
 }
 
-function dateFixer(dateAsYYYYMMDD) {
-  const aYear = dateAsYYYYMMDD.slice(2, 4); //work only for year>2000!
-  const aMonth = dateAsYYYYMMDD.slice(5, 7);
-  const aDay = dateAsYYYYMMDD.slice(8, 10);
-  return `${aDay}.${aMonth}.${aYear}`
-}
 function openPopup(){
 popup.classList.add("open-popup");
 }
