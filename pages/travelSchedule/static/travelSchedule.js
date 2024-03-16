@@ -21,7 +21,7 @@ function search(){
         let filteredRows= '';
         let searchSourceText = sourceSearchBar.value.toLowerCase();
         let searchDestinationText = destinationSearchBar.value.toLowerCase();
-        let searchDate= dateFixer(dateSearchBar.value);
+        let searchDate= dateSearchBar.value;
 
         for (let i=0; i< rows.length; i++){
             const currentSourceRowText = rows[i].children[3].innerText.toLowerCase();

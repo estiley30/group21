@@ -68,7 +68,6 @@ def add_new_trip():
             'Driver_email': driver_email,
             'User_email': User_email,
             'id': id
-
         }
         tremp_col.insert_one(my_travel)
         # Redirect to a different page after adding the trip
