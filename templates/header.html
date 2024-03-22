@@ -7,14 +7,16 @@
         </label>
         <ul id="navbar">
             {% if session.get('logged_in') %}
-            <script>
-            console.log("User is logged in navvvvv.");
-            </script>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/travelSchedule">Travel Schedule</a></li>
-            <li><a href="/travelHistory">My Travels</a></li>
-            <li><a href="/newTravel">New Travel</a></li>
+                <script>
+                console.log("User is logged in navvvvv.");
+                </script>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/travelSchedule">Travel Schedule</a></li>
+                <li><a href="/travelHistory">My Travels</a></li>
+                {% if session.get('license_checked') %}
+                    <li><a href="/newTravel">New Travel</a></li>
+                {% endif %}
             {% else %}
             <li><a href="/about">About</a></li>
             {% endif %}
@@ -29,8 +31,9 @@
         </script>
         {% else %}
         <button class="btn" id="logonBtn"><a href="/login">Sign In</a> </button>
-        {% endif %}
         <button class="btn" id="signUpBtn"><a href="/signUp">Sign Up</a> </button>
+        {% endif %}
+
 
     </div>
 </header>

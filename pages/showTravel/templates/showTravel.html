@@ -12,7 +12,8 @@
 
 <div class="form container">
     <div class="title">Travel Details</div>
-    <form id="tripForm" action="/newTravel" method="POST"  >
+    <form id="tripForm" action="/editTravel" method="POST"  >
+        <input type="text" id="tripId" name="tripId" value="{{ details.id }}">
             <div class="input-box">
                 <label>Source</label>
                 <div class="location-inputs">
@@ -52,10 +53,12 @@
             </div>
 
         <div class="input-row">
-            <div class="input-box ">
-                <label>Date</label>
+            <div class="input-box">
+            <label>Date</label>
                 <div class="input-control">
-                    <input id="dateTrip" name="dateTrip" type="text" disabled placeholder="{{details.Date}}"><!--required-->
+                    <input id="dateInput" type="date" value="{{details.Date}}" style="display:none;">
+
+                    <input id="datePlaceholder" name="dateTrip" type="text" disabled placeholder="{{details.Date}}">
                     <div class="error"></div>
                 </div>
             </div>
@@ -63,10 +66,13 @@
             <div class="input-box">
                 <label>Time</label>
                 <div class="input-control">
-                    <input id="timeTrip" name="timeTrip" type="text" disabled placeholder="{{details.Time}}"><!--required-->
+                    <input id="timeInput" type="time" value="{{details.Time}}" style="display:none;">
+
+                    <input id="timePlaceholder" name="timeTrip" type="text" disabled placeholder="{{details.Time}}">
                     <div class="error"></div>
                 </div>
             </div>
+
 
             <div class="input-box">
                 <label>Number of Places</label>
@@ -92,10 +98,18 @@
         </div>
 
         <div class="button">
-                <input type="submit" class="submit" id="editTrip"  value="Duplicate" disabled>
+            {% if session.get('email') == details.Driver_email %}
+                {% if edit_mode %}
+                    <input type="submit" class="submit" value="Save">
+                {% else %}
+                    <button type="button" class="submit" id="editTrip">Edit</button>
+                {% endif %}
+            {% endif %}
         </div>
+
     </form>
 </div>
+{{details.Driver_email}}
 {% endblock %}
 
 {% block page_body_js %}

@@ -99,19 +99,6 @@ function displayError(message) {
         systemMessageSchdlPage.classList.remove("open-error");
     }, 4000);
 }
-// function registerForRide() {
-//     console.log("registerForRide:");
-//
-//     let selectedOption = document.querySelector('input[name="selectRow"]:checked');
-//     if (selectedOption) {
-//         selectedOption.checked = false;
-//         openPopup()
-//     } else {
-//         displayError()
-//     }
-// }
-
-
 
 // Define a global variable to store the selected trip data
 let selectedTripData;
@@ -142,45 +129,6 @@ function registerForRide() {
 
         selectedTripData.id = `${selectedTripData.driver}_${selectedTripData.date.toString()}_${selectedTripData.time.toString()}`
         console.log('id of selected ride'+ selectedTripData.id)
-        // fetch('/get_ride_session/' + selectedTripData.id)
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         if (data['email_user'] != data['email_driver']) {
-        //             console.log(data['email_user'])
-        //             console.log('emailDriver '+data['email_driver'])
-        //             // Open the popup
-        //             openPopup();
-        //             // check= false;
-        //             console.log('popup data[email_user] != data[email_driver]')
-        //         } else {
-        //             displayError(" You can't register to your own ride!");
-        //             check= false;
-        //             errorOccurred = true; // Error occurred here
-        //             // console.log('1'+check)
-        //         }
-        //         if(check) {
-        //             fetch('/is_one_ride/' + selectedTripData.id)
-        //                 .then(response => response.json())
-        //                 .then(data => {
-        //                     if (!data['exists']) {
-        //                         // Open the popup
-        //                         openPopup();
-        //                         console.log('popup !data[exists]')
-        //                     } else {
-        //
-        //                         displayError(" You can't register to the same ride twice!");
-        //                          errorOccurred = true; // Error occurred here
-        //
-        //                     }
-        //                     // Use the fetched data
-        //
-        //                 });
-        //         }
-        //         // console.log('2'+check)
-        //         // Use the fetched data
-        //         console.log('USER: ' + data['email_user'] + 'DRIVER: ' + data['email_driver']); // Output: example@example.com
-        //     });
-        // console.log('3'+check)
         fetch('/get_ride_session/' + selectedTripData.id)
             .then(response => response.json())
             .then(data => {

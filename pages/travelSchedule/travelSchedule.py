@@ -15,8 +15,14 @@ travelSchedule = Blueprint(
 @travelSchedule.route('/travelSchedule')
 def index():
     # Query to sort records by date and time first and then by source
+    ##wtf???
     travels = travels_col.find({'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}).sort([("Date", 1),("Time", 1), ("Source", 1)])
-
+    # travels = travels_col.find({
+    #     '$and': [
+    #         {'Max': {'$type': 'string'}},  # Check if Max is a string
+    #         {'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}  # Convert to int and check if greater than 0
+    #     ]
+    # }).sort([("Date", 1), ("Time", 1), ("Source", 1)])
 
     print(f' travelSchedule: {travels}')
     return render_template('travelSchedule.html', travels=travels)

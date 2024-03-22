@@ -21,7 +21,10 @@
         <ul class="menu">
             <li class="box"><a href="/travelSchedule">Travel schedule</a></li>
             <li class="box"><a href="/travelHistory">My Travels</a></li>
-            <li class="box"><a href="/newTravel">Create a new Travel</a></li>
+            {% if session.get('license_checked') %}
+                   <li class="box"><a href="/newTravel">Create a new Travel</a></li>
+            {% endif %}
+
         </ul>
     </div>
 

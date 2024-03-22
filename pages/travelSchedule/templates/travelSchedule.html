@@ -34,7 +34,7 @@
             <th>Time </th>
             <th>Source </th>
             <th>Destination</th>
-            <th>Max</th>
+            <th>Seats Available</th>
             <th>Driver </th>
             <th>Price </th>
         </tr>
@@ -42,14 +42,14 @@
     <tbody id="tbody">
         {% for record in travels %}
         <tr>
-            <td><input type="radio" name="selectRow" value="{{ record._id }}"></td>
-            <td>{{ record.Date }}</td>
-            <td>{{ record.Time }}</td>
-            <td>{{ record.Source }}</td>
-            <td>{{ record.Destination }}</td>
-            <td>{{ record.Max }}</td>
-            <td>{{ record.Driver }}</td>
-            <td>{{ record.Price }}</td>
+            <td data-label="Select"><input type="radio" name="selectRow" value="{{ record._id }}"></td>
+            <td data-label="Date">{{ record.Date }}</td>
+            <td data-label="Time">{{ record.Time }}</td>
+            <td data-label="Source">{{ record.Source }}</td>
+            <td data-label="Destination">{{ record.Destination }}</td>
+            <td data-label="Seats Available">{{ record.Max }}</td>
+            <td data-label="Driver">{{ record.Driver }}</td>
+            <td data-label="Price">{{ record.Price }}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -8,8 +8,8 @@ app = Flask(__name__)
 app.config.from_pyfile('settings.py')
 
 
-uri = "mongodb+srv://esti:esti@cluster0.zq1bzx1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-# uri ="mongodb+srv://yaelnaveh:yaelnaveh@cluster0.xvmrlkv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+# uri = "mongodb+srv://esti:esti@cluster0.zq1bzx1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+uri ="mongodb+srv://yaelnaveh:yaelnaveh@cluster0.xvmrlkv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 # Create a new client and connect to the server
 cluster = MongoClient(uri, server_api=ServerApi('1'))
 database = cluster['DrivingTogether']

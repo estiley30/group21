@@ -29,6 +29,8 @@ def index():
         # street = request.form['street']
         # number = request.form['number']
 
+        license_checked = 'license' in request.form  # Check if the 'license' checkbox was checked
+
         # Check if email or phone number already exists in the database
         existing_user_email = users_col.find_one({'email': email})
         existing_user_phone = users_col.find_one({'phone': phone})
@@ -50,13 +52,18 @@ def index():
             'city': city,
             # 'street': street,
             # 'number': number
+            'license_checked': license_checked  # Include the checkbox value in the database entry
         })
         user = users_col.find_one({'email': email, 'password': password})
         # login.setup_session(email, user['first_name'])
         # setup_session(email, user['first_name']) #function in login.py
+
         session['email'] = email
         session['logged_in'] = True
         session['username'] = user['first_name']  # Assuming 'first_name' is the field containing the user's name
+
+        session['license_checked'] = license_checked
+        print(f' license_checked: {license_checked}')
         return render_template('home.html')
 
     return render_template('signUp.html')

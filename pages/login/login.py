@@ -31,6 +31,8 @@ def index():
             currUserEmail = email
             session['logged_in'] = True
             session['username'] = user['first_name']  # Assuming 'first_name' is the field containing the user's name
+            session['license_checked'] = user['license_checked']
+            #session['license_checked']
             # setup_session(email, user['first_name'])
             return render_template('home.html', email=email, user=user)
         else:
@@ -47,6 +49,9 @@ def logout_func():
     session['logged_in'] = False
     session['username'] = ''
     session['email'] = ''
+    session['email'] = ''
+    session['license_checked'] = ''
+
     return render_template('first.html')
 
 
