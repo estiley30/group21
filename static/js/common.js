@@ -60,16 +60,6 @@ export {checkCity}
     }
 }
 export {checkStreet}
+/////////////////////////////////////////////////////////////////////////////
 
-//  const checkNumber=(numberValue,number)=> {
-//     if(numberValue==='') {
-//         setSuccess(number);
-//     }else if(numberValue<1){
-//         setError(number, 'Enter a valid number!');
-//         return false;
-//     }else{
-//         setSuccess(number);
-//         return true;
-//     }
-// }
-// export {checkNumber}
+///////////////////////////////////////////////////////////////////////////////22/3

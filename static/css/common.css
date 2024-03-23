@@ -283,6 +283,17 @@ body {
     color: red;
 }
 
+#systemMessageHistPage{
+    visibility: hidden;
+}
+.open-error.input-control.error#systemMessageHistPage {
+    visibility: visible;
+    color: red;
+}
+
+.delete{
+    background-color: indianred;
+}
 .checkbtn{
     font-size: 30px;
     display: none;

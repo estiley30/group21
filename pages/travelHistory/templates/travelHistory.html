@@ -22,6 +22,7 @@
         <br>
 <!--        unchosen-error="Please choose a ride first"-->
     <div class="input-control error" id="systemMessageHistPage" ></div>
+<!--        <div class= "input-control error systemMessage"  ></div>-->
 <table class="table travelScheduleTable" id="travelScheduleTable">
     <thead>
         <tr>
@@ -61,12 +62,13 @@
 
 </section>
 <!--<button type="button" id="removeFromTripButton" style="display: none;">Remove from Trip</button>-->
-<button type="submit" class="submit " name="remove" id="remove" onclick="openPopup()" value="{{userName}}">Remove from Trip</button>
+<button type="submit" class="submit delete" name="remove" id="remove" onclick="checkRadioRemove()" value="{{userName}}">unsubscribe</button>
+<!--onclick="openPopup()"-->
 <div class="popup" id="popup">
             <img src="/static/media/img/tick.png">
             <h2>you remove!</h2>
             <p>You remove from the ride</p>
-            <button type="button" onclick="checkRadioRemove()">OK</button>
+            <button type="button" onclick="reload()">OK</button>
 </div>
 <button type="submit" class="submit right-aligned" id="showTravelButton" onclick="checkRadio()" value="{{userName}}" >Show Travel</button>
 <!--onclick="redirectToShowTravel()-->

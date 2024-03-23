@@ -8,12 +8,23 @@ function openPopup(){
 popup.classList.add("open-popup");
 }
 ////////////////////////////////////
-function displayError(){
-systemMessageHistPage.classList.add("open-error");
+// function displayError(){
+// systemMessageHistPage.classList.add("open-error");
+//     setTimeout(function () {
+//         systemMessageHistPage.classList.remove("open-error");
+//     }, 4000);
+
+// }
+
+function displayError(message) {
+    let systemMessageHistPage = document.getElementById("systemMessageHistPage");
+    systemMessageHistPage.textContent = message;
+    systemMessageHistPage.classList.add("open-error");
     setTimeout(function () {
         systemMessageHistPage.classList.remove("open-error");
     }, 4000);
 }
+
 function checkRadio(){
     let selectedOption = document.querySelector('input[name="selectRow"]:checked');
     if (selectedOption) {
@@ -48,34 +59,13 @@ function checkRadio(){
             .catch(error => console.error('Error show travel:', error));
     } else {
         console.log("No selected option");
-        displayError()
+        displayError("Please choose a ride first")
     }
 }
                 // window.location.href = '/showTravel' + selectedTripData.id
 
 ///////////////////////////////////////////////////////////////////////////////22/3
 
-
-// function displaySuccessMessage() {
-//     const urlParams = new URLSearchParams(window.location.search);
-//     const successMessage = urlParams.get('success_message');
-//     // if (successMessage) {
-//         const messageElement = document.createElement('div');
-//         messageElement.classList.add('success-message');
-//         messageElement.textContent = successMessage;
-//         document.body.appendChild(messageElement);
-//         // Fade out the message after 3 seconds
-//         setTimeout(() => {
-//             messageElement.style.opacity = 0;
-//             setTimeout(() => {
-//                 messageElement.remove();
-//             }, 1000); // Remove after fade out animation (1 second)
-//         }, 3000); // Fade out after 3 seconds
-//     // }
-// }
-
-// Call the function when the page loads
-// window.addEventListener('load', displaySuccessMessage);
 
 
 
@@ -109,24 +99,16 @@ function checkRadioRemove() {
                 if (data['email_user'] == data['email_driver']) {
                     console.log(data['email_user']);
                     console.log('emailDriver ' + data['email_driver']);
-                    displayError(" You can't register to your own ride!");
+                    displayError("You cannot unsubscribe from your ride!");
                     //add displatError!!!!!!!! you cant remove from yours travel
                 } else {
                    console.log('else: popup yoe remove and do what you need in the db')
                     fetch('/remove_from_ride/' + data['id_ride'])
                         .then(response => response.json())
                         .then(data => {
-                            // Handle the JSON response
                             if (data.success) {
-                                // Update the page content or perform any necessary actions
-                                // For example, you can display a success message or reload certain parts of the page
-                                // displaySuccessMessage(data.message)
-                                console.log(data.message);
-                                // Reload the page after a short delay (optional)
-                                openPopup()
-                                // setTimeout(() => {
-                                    window.location.reload();
-                                // }, 1000); // Reload after 1 second (adjust as needed)
+                                    openPopup()
+
                             } else {
                                 // Handle errors or display error messages
                                 console.error('Error:', data.message);
@@ -148,3 +130,6 @@ function checkRadioRemove() {
     }
 }
 
+function  reload() {
+     window.location.reload();
+}

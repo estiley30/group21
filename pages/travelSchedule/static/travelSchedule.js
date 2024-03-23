@@ -85,12 +85,6 @@ function closePopup(){
 popup.classList.remove("open-popup");
 }
 
-// function displayError(message){
-// systemMessageSchdlPage.classList.add("open-error");
-//     setTimeout(function () {
-//         systemMessageSchdlPage.classList.remove("open-error");
-//     }, 4000);
-// }
 function displayError(message) {
     let systemMessageSchdlPage = document.getElementById("systemMessageSchdlPage");
     systemMessageSchdlPage.textContent = message;
@@ -123,12 +117,13 @@ function registerForRide() {
             max: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
             driver: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
             price: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
+            // iid:selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
             id: ""
 
         };
-
+        console.log('idd '+ selectedTripData.iid)
         selectedTripData.id = `${selectedTripData.driver}_${selectedTripData.date.toString()}_${selectedTripData.time.toString()}`
-        console.log('id of selected ride'+ selectedTripData.id)
+        // console.log('id of selected ride'+ selectedTripData.id)
         fetch('/get_ride_session/' + selectedTripData.id)
             .then(response => response.json())
             .then(data => {
@@ -146,14 +141,9 @@ function registerForRide() {
                             } else {
                                 openPopup();
                             }
-                            // Use the fetched data
-
                         });
 
                 }
-                // console.log('2'+check)
-                // Use the fetched data
-                console.log('USER: ' + data['email_user'] + 'DRIVER: ' + data['email_driver']); // Output: example@example.com
             });
 
 
@@ -174,9 +164,6 @@ function closePopupAndRedirect() {
             if (response.ok) {
                 // Close the popup
                 closePopup();
-
-                // Redirect to the travel history page
-                ///need to go to /travelHistory/<userEmail>!!!!!!!
                 window.location.href = '/travelHistory';
             } else {
                 console.error('Failed to register for ride');
