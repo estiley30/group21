@@ -1,6 +1,5 @@
 console.log('hii2');
 import { setError, setSuccess, doesNotContainNumbers, containsOnlyEnglishLetters, checkCity, checkStreet} from '../../static/js/common.js';
-// import { setSuccess } from './signUp.js';
 const tripForm = document.querySelector('#tripForm');
 const citySource = document.querySelector('#citySource');
 const streetSource = document.querySelector('#streetSource');
@@ -13,7 +12,13 @@ const timeTrip = document.querySelector('#timeTrip');
 const numOfPlc = document.querySelector('#numOfPlc');
 const price = document.querySelector('#price');
 
-//////////////////////////////
+
+ setTimeout(function() {
+     let errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
+        }
+    }, 3000);
 document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to city input
     citySource.addEventListener('input', function() {
@@ -65,17 +70,21 @@ const validateTripInputs = () => {
     console.log('validateTripInputs')
     const citySourceValue = citySource.value.trim();
     const streetSourceValue = streetSource.value.trim();
-    const numberSourceValue = numberSource.value.trim();
     const cityDestinationValue = cityDestination.value.trim();
     const streetDestinationValue = streetDestination.value.trim();
-    const numberDestinationValue = numberDestination.value.trim();
-    const dateTripValue = dateTrip.value.trim();
+    let dateTripValue = new Date(dateTrip.value.trim());
+    dateTripValue.setHours(0, 0, 0, 0);
     const timeTripValue = timeTrip.value.trim();
     const numOfPlcValue = numOfPlc.value.trim();
     const priceValue = price.value.trim();
-    const today = formatDate(new Date());
-    console.log(today);
-    // let isValid = true;
+    let todayDate = new Date();
+    todayDate.setHours(0, 0, 0, 0);
+    const today = new Date();
+    const currentHours = today.getHours();
+    const currentMinutes = today.getMinutes();
+    const timeParts = timeTripValue.split(":");
+    const tripHours = parseInt(timeParts[0], 10);
+    const tripMinutes = parseInt(timeParts[1], 10);
 
     // citySource
     if (citySourceValue === '') {
@@ -84,7 +93,6 @@ const validateTripInputs = () => {
     } else if(!checkCity(citySourceValue, citySource)){
             return false;
     }
-    console.log('after city validateTripInputs'+ today)
     if (streetSourceValue && !checkStreet(streetSourceValue, streetSource)){
         return false;
     }
@@ -97,13 +105,14 @@ const validateTripInputs = () => {
     if (streetDestinationValue && !checkStreet(streetDestinationValue, streetDestination)){
         return false;
     }
-    if((dateTripValue && dateTripValue<=today) || !dateTripValue){
+
+    if((dateTripValue && dateTripValue<todayDate) || !dateTripValue){
         setError(dateTrip, 'Future date is required!');
         return false;
     }
     setSuccess(dateTrip);
-    if(!timeTripValue){
-        setError(timeTrip, 'Time is required!');
+    if(timeTripValue&& ((dateTripValue.getTime() === todayDate.getTime()) && (tripHours < currentHours || ((tripHours === currentHours) && (tripMinutes <= currentMinutes))) )){
+        setError(timeTrip, 'Future time is required!');
         return false;
     }
     setSuccess(timeTrip);
@@ -120,12 +129,3 @@ const validateTripInputs = () => {
     return true;
 };
 
-function formatDate(date) {
-    // Extract year, month, and date from the date object
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-based, so we add 1
-    const day = String(date.getDate()).padStart(2, '0');
-
-    // Return the formatted date string in the format YYYY-MM-DD
-    return `${year}-${month}-${day}`;
-}

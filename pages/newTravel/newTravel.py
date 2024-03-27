@@ -32,8 +32,17 @@ def add_new_trip():
         driver_name = session.get('username', 'Unknown')  # Default to 'Unknown' if username is not found in the session
         driver_email = session.get('email', 'Unknown')
         User_email = session.get('email', 'Unknown')
-        id = driver_name + '_' + str(date_trip) + '_' + str(time_trip)
+        # id = driver_name + '_' + str(date_trip) + '_' + str(time_trip)
+        id = driver_email + '_' + str(date_trip) + '_' + str(time_trip)
+        ##here i want to check if i have trip with this id in travels_col
+        ## if yes-> massege: you have ride with the same time
         print(f' id: {id}')
+        have_same_id= travels_col.find_one({'id': id})
+        if have_same_id:
+            print(f' new travel ${have_same_id}')
+            # If email or phone number already exists, return a message
+            return render_template('newTrip.html', error_message="You have already created a ride at that time")
+
         # insert trip data into database
         travel = {
             'Source': city_source,
@@ -78,3 +87,5 @@ def add_new_trip():
 def trip_added():
     return redirect(url_for('travelSchedule.index'))
     # return render_template('newTrip.html')
+
+######################################################

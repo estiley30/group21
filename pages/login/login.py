@@ -9,10 +9,6 @@ login = Blueprint(
     static_url_path='/login',
     template_folder='templates')
 
-# def setup_session(email, username):
-#     session['email'] = email
-#     session['logged_in'] = True
-#     session['username'] = username
 @login.route('/login', methods= ['GET', 'POST'])
 def index():
     error_message = None  # Initialize error_message to None
@@ -32,8 +28,6 @@ def index():
             session['logged_in'] = True
             session['username'] = user['first_name']  # Assuming 'first_name' is the field containing the user's name
             session['license_checked'] = user['license_checked']
-            #session['license_checked']
-            # setup_session(email, user['first_name'])
             return render_template('home.html', email=email, user=user)
         else:
             # If no matching user is found, show an error message
@@ -60,6 +54,5 @@ def get_data():
     # This route returns the data in JSON format
     data = {
         'email': str(session['email'])
-        # 'user': 'John Doe'
     }
     return jsonify(data)

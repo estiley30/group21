@@ -14,7 +14,12 @@
     <div class="title">New Travel</div>
 
     <form id="tripForm" action="/newTravel" method="POST"  >
-<!--        <div class="input-row">-->
+
+        <div class="error">
+                   {% if error_message %}
+                    <p id="error-message">{{ error_message }}</p>
+               {% endif %}
+        </div>
             <div class="input-box">
                 <label>Source</label>
                 <div class="location-inputs">
@@ -99,6 +104,13 @@
                     <input type="checkbox" required> I agree to the terms and conditions  <!--required-->
                 </label>
         </div>
+
+        <div class="checkbox">
+                <label >
+                    <input type="checkbox" required> I know that if people sign up for the ride I won't be able to delete it <!--required-->
+                </label>
+        </div>
+         <br>
         <div class="button">
                 <input type="submit" class="submit" id="submitTrip"  value="Create">
         </div>
@@ -108,16 +120,3 @@
 {% block page_body_js %}
 <script type="module" src="{{url_for('newTravel.static',filename='newTrip.js')}}"></script>
 {% endblock %}
-
-
-<!--<script>-->
-<!--    document.getElementById("tripForm").addEventListener("submit", function(event) {-->
-<!--        event.preventDefault();  // Prevent the default form submission-->
-
-<!--        // Change the form's method to POST-->
-<!--        this.setAttribute("method", "POST");-->
-
-<!--        // Submit the form-->
-<!--        this.submit();-->
-<!--    });-->
-<!--</script>-->

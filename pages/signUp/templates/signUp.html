@@ -13,9 +13,11 @@
             <div class="title">Sign Up</div>
             <p class="success register-success"></p>
            <form id="customerForm" action="/signUp" method="POST">
-               {% if error_message %}
-                    <p style="color: red;">{{ error_message }}</p>
+               <div class="error">
+                   {% if error_message %}
+                    <p id="error-message">{{ error_message }}</p>
                {% endif %}
+               </div>
                 <div class="input-row">
                     <div class="input-control">
                         <label for="firstName">First Name (*)</label>
@@ -52,7 +54,7 @@
 
                     <div class="input-control">
                         <label>Confirm Password (*)</label>
-                        <input id="password2" name= "password2" type="password" placeholder="Enter your password2" > <!--required-->
+                        <input id="password2" name= "password2" type="password" placeholder="Confirm your password" > <!--required-->
                         <div class="error"></div>
                     </div>
                 </div>
@@ -72,8 +74,6 @@
                             </select>
                     </div>
                 </div>
-
-        <!--        <div class="input-control">-->
                         <label>Address</label>
                         <div class="location-inputs">
                             <div class="input-control">
@@ -90,7 +90,6 @@
                             </div>
                         </div>
                         <br>
-        <!--        </div>-->
 
                 <div class="checkbox">
                         <label>

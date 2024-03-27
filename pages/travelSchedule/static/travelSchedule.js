@@ -94,37 +94,16 @@ function displayError(message) {
     }, 4000);
 }
 
-// Define a global variable to store the selected trip data
-let selectedTripData;
+let travelId;
 
 // Function to register for a ride
 function registerForRide() {
     console.log("registerForRide:");
-    // console.log("OUR CURRENT USER" + {{currUserEmail}} );
-    let check=true;
-    let errorOccurred = false; // Flag to track if an error has occurred
     // Get the selected option
     let selectedOption = document.querySelector('input[name="selectRow"]:checked');
     if (selectedOption) {
-
-        // Store the selected trip data
-        selectedTripData = {
-            _id: selectedOption.value,
-            date: selectedOption.parentNode.nextElementSibling.innerText,
-            time: selectedOption.parentNode.nextElementSibling.nextElementSibling.innerText,
-            source: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            destination: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            max: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            driver: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            price: selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            // iid:selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText,
-            id: ""
-
-        };
-        console.log('idd '+ selectedTripData.iid)
-        selectedTripData.id = `${selectedTripData.driver}_${selectedTripData.date.toString()}_${selectedTripData.time.toString()}`
-        // console.log('id of selected ride'+ selectedTripData.id)
-        fetch('/get_ride_session/' + selectedTripData.id)
+        travelId=selectedOption.parentNode.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.innerText
+        fetch('/get_ride_session/' + travelId)
             .then(response => response.json())
             .then(data => {
                 if (data['email_user'] == data['email_driver']) {
@@ -133,7 +112,7 @@ function registerForRide() {
                     displayError(" You can't register to your own ride!");
 
                 } else {
-                    fetch('/is_one_ride/' + selectedTripData.id)
+                    fetch('/is_one_ride/' + travelId)
                         .then(response => response.json())
                         .then(data => {
                             if (data['exists']) {
@@ -142,20 +121,16 @@ function registerForRide() {
                                 openPopup();
                             }
                         });
-
                 }
             });
-
-
     } else {
         displayError("Please choose a ride first");
-
     }
 }
 
 // Function to close the popup and redirect to travel history page
 function closePopupAndRedirect() {
-    const selectedTripId = selectedTripData.id;
+    const selectedTripId = travelId;
     console.log("id:" + selectedTripId);
 
     // Insert the selected trip data into the ride table collection

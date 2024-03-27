@@ -3,8 +3,7 @@ from pprint import pprint
 from flask import Flask, redirect, url_for, render_template, request, session, Blueprint, jsonify
 from app import travels_col, tremp_col
 from flask import jsonify
-
-
+from datetime import datetime
 travelSchedule = Blueprint(
     'travelSchedule',
     __name__,
@@ -14,16 +13,23 @@ travelSchedule = Blueprint(
 
 @travelSchedule.route('/travelSchedule')
 def index():
-    # Query to sort records by date and time first and then by source
-    ##wtf???
-    travels = travels_col.find({'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}).sort([("Date", 1),("Time", 1), ("Source", 1)])
-    # travels = travels_col.find({
-    #     '$and': [
-    #         {'Max': {'$type': 'string'}},  # Check if Max is a string
-    #         {'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}  # Convert to int and check if greater than 0
-    #     ]
-    # }).sort([("Date", 1), ("Time", 1), ("Source", 1)])
+    # Get the current date and time
+    current_datetime = datetime.now()
 
+    # Convert current datetime to ISO format string
+    current_datetime_str = current_datetime.isoformat()
+
+    # Query to filter records by date and time greater than the current time
+    query = {
+        "$or": [
+            {"Date": {"$gt": current_datetime_str}},
+            {"Date": current_datetime_str, "Time": {"$gt": current_datetime_str.split('T')[1]}},
+            {'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}
+        ]
+    }
+
+    # Query to sort records by date and time first and then by source
+    travels = travels_col.find(query).sort([("Date", 1),("Time", 1), ("Source", 1)])
     print(f' travelSchedule: {travels}')
     return render_template('travelSchedule.html', travels=travels)
 
@@ -31,17 +37,9 @@ def index():
 @travelSchedule.route('/register_for_ride/<id_ride>', methods=['GET'])
 def register_for_ride(id_ride):
     print(f' id_ride: {id_ride}')
-
-    # # Query the selected ride from the database
-
     selected_ride = travels_col.find_one({'id': id_ride})
-    print(f' selected_ride_DriverEmail:{selected_ride['DriverEmail']}')
-    print(f' selected_ridesession:{session.get('email')}')
-
     if(selected_ride['DriverEmail'] != session.get('email')):
         print(f' selected_ride: {selected_ride}')
-        # if selected_ride:
-        #     # Add the selected ride to the ride table
         ride_data = {
             'Date': selected_ride['Date'],
             'Time': selected_ride['Time'],
@@ -68,9 +66,6 @@ def register_for_ride(id_ride):
         new_values = {'$set': {'Max': str(int(selected_ride['Max']) - 1)}}
         travels_col.update_one(my_query, new_values)
 
-
-        # travels = travels_col.update_one({'id': id_ride },{'Max': str(int(selected_ride['Max']) - 1)} )
-        print(f' after ride_data ')
         # Insert the ride data into the MongoDB database
         tremp_col.insert_one(ride_data)
         # update many

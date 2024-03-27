@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>first</title>
-    {% include('style.html') %}
-</head>
-<body>
+{% extends 'base.html' %}
+ {% block page_head %}
+    <title> First</title>
+        {% block page_head_css %}
+            {% include('style.html') %}
+        {% endblock %}
+    {% endblock %}
+
+
+{% block page_body_content %}
 <div class="container">
     <header id="showcase">
        <h1>Driving Together</h1>
@@ -22,5 +24,5 @@
 <div id="car">
      <img src="/static/media/img/car.png" alt="car">
 </div>
-</body>
-</html>
+
+{% endblock %}

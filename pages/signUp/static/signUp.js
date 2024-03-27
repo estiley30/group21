@@ -11,28 +11,12 @@
  const street=document.querySelector('#street')
  const number=document.querySelector('#number')
 
- /*document.addEventListener('DOMContentLoaded', function() {
-     // Add event listener to city input
-     city.addEventListener('input', disableStreetNum(city, street, number));
- })
-  const  disableStreetNum= (city, street, number) => {
-        // Enable or disable street and house number based on whether city is filled
-        if (city.value.trim() !== '') {
-            street.disabled = false;
-            number.disabled = false;
-
-        }else {
-            street.disabled = false;
-            number.disabled = false;
-            street.value = '';
-            number.value = '';
-
+ setTimeout(function() {
+     let errorMessage = document.getElementById('error-message');
+        if (errorMessage) {
+            errorMessage.style.display = 'none';
         }
- }*/
-
-
-
-
+    }, 3000);
 
  document.addEventListener('DOMContentLoaded', function() {
     // Add event listener to city input
@@ -47,14 +31,11 @@
             number.disabled = false;
             street.value = '';
             number.value = '';
-
         }
     })
 })
  customerForm.addEventListener('submit', e => {
     e.preventDefault(); // Prevent default form submission behavior
-
-    // Validate inputs
     let isValid = true;
     isValid= validateInputs();
     console.log('isValid=' + isValid)
@@ -211,17 +192,6 @@ const validateInputs=()=> {
         console.log('if(!checkStreet(streetValue, street))')
         return false;
     }
-    // number
-    // if(!checkNumber(numberValue,number)) {
-    //     console.log(' if(!checkNumber(numberValue,number))')
-    //     return false;
-    // }
     console.log('trueeeee')
     return true;
  }
-
-
-// function moveToHome() {
-//   // Redirect to '/home'
-//   window.location.href = '/home';
-// }

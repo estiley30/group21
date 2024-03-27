@@ -4,7 +4,6 @@
      {{ super() }}
         {% block page_head_css %}
             <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}"/>
-            <link rel="stylesheet" href="{{ url_for('travelSchedule.static', filename='travelSchedule.css') }}"/>
         {% endblock %}
     {% endblock %}
 
@@ -22,44 +21,45 @@
     <br>
 
     <div class= "input-control error" id="systemMessageSchdlPage" ></div> <!--- figure out how to display it!! --->
-<table action="/register_for_ride" class="table travelScheduleTable" id="travelScheduleTable"> <!---i think we can remove action="/register_for_ride" --->
-     {% if error_message %}
-        <p class="error-message">{{ error_message }}</p>
-     {% endif %}
+    <div class="scrollable-table">
+        <table action="/register_for_ride" class="table travelScheduleTable" id="travelScheduleTable"> <!---i think we can remove action="/register_for_ride" --->
+             {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+             {% endif %}
 
-    <thead>
-        <tr>
-            <th>Select</th>
-            <th>Date </th>
-            <th>Time </th>
-            <th>Source </th>
-            <th>Destination</th>
-            <th>Seats Available</th>
-            <th>Driver </th>
-            <th>Price </th>
-        </tr>
-    </thead>
-    <tbody id="tbody">
-        {% for record in travels %}
-        <tr>
-            <td data-label="Select"><input type="radio" name="selectRow" value="{{ record._id }}"></td>
-            <td data-label="Date">{{ record.Date }}</td>
-            <td data-label="Time">{{ record.Time }}</td>
-            <td data-label="Source">{{ record.Source }}</td>
-            <td data-label="Destination">{{ record.Destination }}</td>
-            <td data-label="Seats Available">{{ record.Max }}</td>
-            <td data-label="Driver">{{ record.Driver }}</td>
-            <td data-label="Price">{{ record.Price }}</td>
-            <td data-label="id" style="display: none;">{{ record.id }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Date </th>
+                    <th>Time </th>
+                    <th>Source </th>
+                    <th>Destination</th>
+                    <th>Seats Available</th>
+                    <th>Driver </th>
+                    <th>Price </th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                {% for record in travels %}
+                <tr>
+                    <td data-label="Select"><input type="radio" name="selectRow" value="{{ record._id }}"></td>
+                    <td data-label="Date">{{ record.Date }}</td>
+                    <td data-label="Time">{{ record.Time }}</td>
+                    <td data-label="Source">{{ record.Source }}</td>
+                    <td data-label="Destination">{{ record.Destination }}</td>
+                    <td data-label="Seats Available">{{ record.Max }}</td>
+                    <td data-label="Driver">{{ record.Driver }}</td>
+                    <td data-label="Price">{{ record.Price }}</td>
+                    <td data-label="id" style="display: none;">{{ record.id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
 
-</table>
+        </table>
+    </div>
+     <button type="submit" class="submit right-aligned" name="selectRowButton" id="registerButton" onclick="registerForRide()">Register</button>
 </section>
 <div class="container">
-
-     <button type="submit" class="submit right-aligned" name="selectRowButton" id="registerButton" onclick="registerForRide()">Register</button>
         <div class="popup" id="popup">
             <img src="/static/media/img/tick.png">
             <h2>Thank You!</h2>
@@ -69,7 +69,6 @@
  </div>
 
 {% endblock %}
-
 {% block page_body_js %}
 {{ super() }}
 <script src="{{url_for('travelSchedule.static', filename='travelSchedule.js') }}"></script>

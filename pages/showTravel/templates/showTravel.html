@@ -12,8 +12,9 @@
 
 <div class="form container">
     <div class="title">Travel Details</div>
+    <div class="input-control error" id="systemMessageShowPage" ></div>
     <form id="tripForm" action="/editTravel" method="POST"  >
-        <input type="text" id="tripId" name="tripId" value="{{ details.id }}">
+        <input type="text" id="tripId" style="display: none" name="tripId" value="{{ details.id }}">
             <div class="input-box">
                 <label>Source</label>
                 <div class="location-inputs">
@@ -97,22 +98,26 @@
             <textarea placeholder="{{details.Comment}}" rows="4" disabled ></textarea>
         </div>
 
-        <div class="button">
+    </form>
+    <div class="button">
             {% if session.get('email') == details.Driver_email %}
                 {% if edit_mode %}
                     <input type="submit" class="submit" value="Save">
                 {% else %}
-                    <button type="button" class="submit" id="editTrip">Edit</button>
+                    <button type="button" class="submit delete" id="deleteTrip" onclick="toDelete()" >Delete</button>
+                    <div class="popup black" id="popup">
+                        <img src="/static/media/img/delete.png">
+                        <h2>The Travel Deleted !</h2>
+                        <p>Your travel has been successfully deleted</p>
+                        <button type="button" onclick="toMyTravel()">OK</button>
+                    </div>
                 {% endif %}
             {% endif %}
         </div>
-
-    </form>
 </div>
-{{details.Driver_email}}
 {% endblock %}
 
 {% block page_body_js %}
-<script type="module" src="{{url_for('showTravel.static',filename='showTravel.js')}}"></script>
+<script src="{{url_for('showTravel.static', filename='showTravel.js') }}"></script>
 {% endblock %}
 
