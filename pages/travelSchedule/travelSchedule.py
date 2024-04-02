@@ -17,21 +17,27 @@ def index():
     current_datetime = datetime.now()
 
     # Convert current datetime to ISO format string
-    current_datetime_str = current_datetime.isoformat()
+    current_date_str = current_datetime.date().isoformat()
+    current_time_str = current_datetime.time().isoformat()
 
-    # Query to filter records by date and time greater than the current time
+    # Query to filter records by date and time greater than or equal to the current datetime and Max > 0
     query = {
-        "$or": [
-            {"Date": {"$gt": current_datetime_str}},
-            {"Date": current_datetime_str, "Time": {"$gt": current_datetime_str.split('T')[1]}},
-            {'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}}
+        "$and": [
+            {
+                "$or": [
+                    {"Date": {"$gt": current_date_str}},
+                    {"Date": current_date_str, "Time": {"$gte": current_time_str}},
+                ]
+            },
+            {'$expr': {'$gt': [{'$toInt': '$Max'}, 0]}} # Check if Max > 0
         ]
     }
 
     # Query to sort records by date and time first and then by source
-    travels = travels_col.find(query).sort([("Date", 1),("Time", 1), ("Source", 1)])
-    print(f' travelSchedule: {travels}')
+    travels = travels_col.find(query).sort([("Date", 1), ("Time", 1), ("Source", 1)])
+    print(f'travelSchedule: {travels}')
     return render_template('travelSchedule.html', travels=travels)
+
 
 
 @travelSchedule.route('/register_for_ride/<id_ride>', methods=['GET'])
