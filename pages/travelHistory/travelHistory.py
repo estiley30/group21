@@ -16,7 +16,23 @@ travelHistory = Blueprint(
 
 @travelHistory.route('/travelHistory')
 def index():
-    tremps = tremp_col.find().sort([("Date", 1), ("Time", 1), ("Source", 1)])
+    # Get the current date and time
+    current_datetime = datetime.now()
+
+    # Convert current datetime to ISO format string
+    current_date_str = current_datetime.date().isoformat()
+    current_time_str = current_datetime.time().isoformat()
+
+    # Query to filter records by date and time greater than or equal to the current datetime and Max > 0
+    query = {
+
+                "$or": [
+                    {"Date": {"$gt": current_date_str}},
+                    {"Date": current_date_str, "Time": {"$gte": current_time_str}},
+                ]
+    }
+
+    tremps = tremp_col.find(query).sort([("Date", 1), ("Time", 1), ("Source", 1)])
     userName = session['username']
 
     print(f'travelhistory: {tremps}')
